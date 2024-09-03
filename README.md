@@ -1,4 +1,5 @@
 ### U1JS Library
+U1JS is a web-browser JavaScript library for display and interacting with web applications using [UINL](https://uinl.github.io) as the UI interaction language.
 
 ## Getting Started
 Install the deps:
