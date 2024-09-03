@@ -1,0 +1,11 @@
+{
+    "testEnvironment": "node",
+    "testRegex": "/tests/.*\\.(test|spec)?\\.(js)$",
+    "moduleDirectories": [
+        "node_modules",
+        "dist"
+    ],
+    "roots": [
+        "dist"
+    ]
+}
