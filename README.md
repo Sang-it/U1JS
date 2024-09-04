@@ -37,8 +37,5 @@ pnpm test
 
 | Task      | Assigned      | Status |
 | --------- | ------------- | ------ |
-
-
-
-// This is trial read me git push
-| Setup bundler | (@sangit) | :white_circle: |
+| Setup bundler | (@sangit) | :white_check_mark: |
+| Setup jest for UI testing | (@sangit) | :white_check_mark: |
