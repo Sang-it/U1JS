@@ -37,4 +37,5 @@ pnpm test
 
 | Task      | Assigned      | Status |
 | --------- | ------------- | ------ |
-| Setup bundler | (@sangit) | :white_circle: |
+| Setup bundler | (@sangit) | :white_check_mark: |
+| Setup jest for UI testing | (@sangit) | :white_check_mark: |
