@@ -1,5 +1,5 @@
 {
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "testRegex": "/tests/.*\\.(test|spec)?\\.(js)$",
     "moduleDirectories": [
         "node_modules",
