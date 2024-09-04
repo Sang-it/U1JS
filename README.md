@@ -37,4 +37,8 @@ pnpm test
 
 | Task      | Assigned      | Status |
 | --------- | ------------- | ------ |
+
+
+
+// This is trial read me git push
 | Setup bundler | (@sangit) | :white_circle: |
