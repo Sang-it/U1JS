@@ -40,6 +40,6 @@ pnpm test
 | Setup bundler | (@sangit) | :white_check_mark: |
 | Setup jest for UI testing | (@sangit) | :white_check_mark: |
 | Handle user actions (click,hover,etc) | (@sangit) | :white_circle: |
-| Write tests for the elements | (@sangit) | :white_circle: |
+| Write tests for the elements(Paragraph,Div,H1) | (@sangit) | :white_check_mark: |
 | Implement Div element (for project overview only) | (@sujan) | :white_circle: |
 | Implement H1 element (for project overview only) | (@dibas) | :white_circle: |
