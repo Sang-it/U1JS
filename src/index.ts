@@ -1,9 +1,19 @@
-const addDiv = (document: Document, content: string) => {
-	const div = document.createElement("div");
-	div.textContent = content;
-	document.body.appendChild(div);
+import { App, AppMethods } from "./app";
+
+declare global {
+	interface Window {
+		app: App | AppMethods;
+	}
+}
+
+window.app = {
+	display: (element) => {
+		window.addEventListener("DOMContentLoaded", () => {
+			(window.app as App).display(element);
+		});
+	},
 };
 
-window.onload = () => {
-	addDiv(document, "Hello, World!");
-};
+window.addEventListener("DOMContentLoaded", () => {
+	window.app = new App();
+});

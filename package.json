@@ -8,7 +8,7 @@
         "build": "tsc && rollup --config rollup.config.mjs && cp bundle/lib.js examples/lib.js",
         "lint": "eslint src",
         "test": "tsc && NODE_OPTIONS=--experimental-vm-modules jest --verbose",
-        "format": "prettier --write src",
+        "format": "prettier --write src examples",
         "prepare": "husky",
         "clean": "rm -rf dist node_modules bundle examples/lib.js"
     },
