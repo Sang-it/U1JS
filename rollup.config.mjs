@@ -6,7 +6,7 @@ export default defineConfig({
     output: {
         sourcemap: true,
         file: 'bundle/lib.js',
-        format: 'cjs'
+        format: 'iife'
     },
     treeshake: false,
     plugins: [typescript({ compilerOptions: { module: 'esnext' }, sourceMap: true })]
