@@ -1,4 +1,4 @@
-import { ParagraphOptions, Paragraph } from "./elements";
+import { ParagraphOptions, Paragraph, Element } from "./elements";
 import { Root } from "./root";
 
 export type ViewOptions = ParagraphOptions;
@@ -10,8 +10,14 @@ export class View {
 		this.root = new Root();
 	}
 
-	display(options: ViewOptions) {
-		this.parseViewOptions(options).display();
+	display(options: ViewOptions | ViewOptions[]) {
+		if (Array.isArray(options)) {
+			for (const element of this.parseViewOptionsArray(options)) {
+				element.display();
+			}
+		} else {
+			this.parseViewOptions(options).display();
+		}
 	}
 
 	private parseViewOptions(options: ViewOptions) {
@@ -21,5 +27,13 @@ export class View {
 			default:
 				throw new Error("Invalid view type");
 		}
+	}
+
+	private parseViewOptionsArray(options: ViewOptions[]) {
+		const elements: Element[] = [];
+		for (const option of options) {
+			elements.push(this.parseViewOptions(option));
+		}
+		return elements;
 	}
 }

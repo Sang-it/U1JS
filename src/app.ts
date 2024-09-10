@@ -7,7 +7,7 @@ export class App {
 		this.view = new View();
 	}
 
-	display(element: ViewOptions) {
+	display(element: ViewOptions | ViewOptions[]) {
 		this.view.display(element);
 	}
 }
