@@ -8,14 +8,14 @@ export type ParagraphOptions = {
 };
 
 export class Paragraph {
-	private text: string;
+	private textContent: string;
 	private htmlElement: HTMLElement;
 
 	constructor(
 		options: ParagraphOptions,
 		public parent: Element | Root
 	) {
-		this.text = options.textContent;
+		this.textContent = options.textContent;
 		this.createHTMLElement();
 	}
 
@@ -29,7 +29,7 @@ export class Paragraph {
 
 	private createHTMLElement() {
 		const element = document.createElement("p");
-		element.textContent = this.text;
+		element.textContent = this.textContent;
 		this.htmlElement = element;
 	}
 }
