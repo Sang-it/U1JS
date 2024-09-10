@@ -46,7 +46,7 @@ export class Paragraph {
 
 	displaySubElements() {
 		for (const element of this.subElements) {
-			this.appendChild(element.htmlElement);
+			element.display();
 		}
 	}
 
