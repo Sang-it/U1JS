@@ -23,13 +23,10 @@ export class Paragraph {
 		this.createHTMLElement();
 		this.viewOptionsToElement = new ViewOptionsToElement();
 		if (options.subElements) {
-			const elements = this.viewOptionsToElement.parse(
+			this.subElements = this.viewOptionsToElement.parse(
 				options.subElements,
 				this
-			);
-			if (Array.isArray(elements)) {
-				this.subElements = elements;
-			}
+			) as Paragraph[];
 		}
 	}
 
