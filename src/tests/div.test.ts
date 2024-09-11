@@ -2,7 +2,7 @@ import { JSDOM } from "jsdom";
 import { describe, expect, test } from "@jest/globals";
 import { embedScript, waitForDocumentLoad, LIB_PATH } from "./utils";
 
-describe.skip("Element: Div", () => {
+describe("Element: Div", () => {
 	test("div can be displayed properly", () => {
 		const { document } = new JSDOM(
 			embedScript(
