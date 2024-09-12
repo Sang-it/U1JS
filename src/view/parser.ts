@@ -1,5 +1,5 @@
 import { Root, ViewOptions } from ".";
-import { Element, Paragraph, Div } from "./element";
+import { Element, Paragraph, Div, H1 } from "./element";
 
 export class ViewOptionsToElement {
 	parse(options: ViewOptions | ViewOptions[], parent: Element | Root) {
@@ -14,8 +14,10 @@ export class ViewOptionsToElement {
 		switch (options.type) {
 			case "PARAGRAPH":
 				return new Paragraph(options, parent);
-            case "DIV":
+			case "DIV":
 				return new Div(options, parent);
+			case "H1":
+				return new H1(options, parent);
 			default:
 				throw new Error("Invalid view type");
 		}
