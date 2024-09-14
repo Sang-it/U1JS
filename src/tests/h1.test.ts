@@ -2,14 +2,14 @@ import { JSDOM } from "jsdom";
 import { describe, expect, test } from "@jest/globals";
 import { embedScript, waitForDocumentLoad, LIB_PATH } from "./utils";
 
-describe.skip("Element: H1", () => {
+describe("Element: H1", () => {
 	test("h1 can be displayed properly", () => {
 		const { document } = new JSDOM(
 			embedScript(
 				LIB_PATH,
 				`
                 app.display({
-                    type: "DIV",
+                    type: "H1",
                     textContent: "Hello World"
                 })
                 `
@@ -34,10 +34,10 @@ describe.skip("Element: H1", () => {
 				LIB_PATH,
 				`
                 app.display({
-                    type: "DIV",
+                    type: "H1",
                     textContent: "Hello World",
                     subElements: [{
-                        type: "DIV",
+                        type: "H1",
                         textContent: "Hello World"
                     }]
                 })

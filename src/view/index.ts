@@ -1,11 +1,11 @@
-import { ParagraphOptions, DivOptions } from "./element";
+import { ParagraphOptions, DivOptions, H1Options } from "./element";
 import { ViewOptionsToElement } from "./parser";
 import { Root } from "./root";
 
 export * from "./element";
 export * from "./root";
 
-export type ViewOptions = ParagraphOptions | DivOptions;
+export type ViewOptions = ParagraphOptions | DivOptions | H1Options;
 
 export class View {
 	private root: Root;
