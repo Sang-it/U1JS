@@ -1,6 +1,6 @@
-import { JSDOM } from "jsdom";
 import { describe, expect, test } from "@jest/globals";
-import { embedScript, waitForDocumentLoad, LIB_PATH } from "./utils";
+import { JSDOM } from "jsdom";
+import { embedScript, LIB_PATH, waitForDocumentLoad } from "./utils";
 
 describe("Element: Div", () => {
 	test("div can be displayed properly", () => {

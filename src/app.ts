@@ -1,4 +1,8 @@
-import { View, ViewOptions } from "./view";
+import { View, ElementOptions } from "./view";
+
+export type EventMap = {
+	click: MouseEvent;
+};
 
 export class App {
 	private view: View;
@@ -7,8 +11,27 @@ export class App {
 		this.view = new View();
 	}
 
-	display(element: ViewOptions | ViewOptions[]) {
-		this.view.display(element);
+	display(options: ElementOptions | ElementOptions[]): void {
+		if (Array.isArray(options)) {
+			this.view.addMany(options);
+		} else {
+			this.view.addOne(options);
+		}
+	}
+
+	event<K extends keyof EventMap>(
+		element_id: string,
+		eventType: K,
+		callback: (ev: EventMap[K]) => void
+	) {
+		const element = document.getElementById(element_id);
+		if (element) {
+			element.addEventListener(eventType, (ev: EventMap[K]) =>
+				callback(ev)
+			);
+		} else {
+			console.error(`Element with id ${element_id} not found`);
+		}
 	}
 }
 

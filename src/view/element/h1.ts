@@ -1,39 +1,21 @@
-import { Root } from "../root";
 import { Element } from ".";
-import { ViewOptions } from "..";
-import { ViewOptionsToElement } from "../parser";
+import { Root } from "../root";
 
-export interface H1Options {
-	type: "H1";
-	textContent: string;
-	subElements?: ViewOptions[];
-}
-
-export class H1 {
-	private textContent: string;
-	private htmlElement: HTMLHeadingElement;
+export class H1<T> {
 	private subElements: Element[];
-	private viewOptionsToElement: ViewOptionsToElement;
+	private htmlElement: HTMLHeadingElement;
 
 	constructor(
-		options: H1Options,
+		options: T,
 		public parent: Element | Root
 	) {
-		this.textContent = options.textContent;
-		this.createHTMLElement();
-		this.viewOptionsToElement = new ViewOptionsToElement();
-		this.subElements = options.subElements
-			? (this.viewOptionsToElement.parse(
-					options.subElements,
-					this
-				) as H1[])
-			: [];
+		this.createHTMLElement(options);
 	}
 
-	display() {
+	show() {
 		this.parent.appendChild(this.htmlElement);
 		if (this.subElements) {
-			this.displaySubElements();
+			this.showSubElements();
 		}
 	}
 
@@ -41,15 +23,19 @@ export class H1 {
 		this.htmlElement.appendChild(element);
 	}
 
-	displaySubElements() {
+	setSubElements(subElements: Element[]) {
+		this.subElements = subElements;
+	}
+
+	private showSubElements() {
 		for (const element of this.subElements) {
-			element.display();
+			element.show();
 		}
 	}
 
-	private createHTMLElement() {
+	private createHTMLElement(options: T) {
 		const element = document.createElement("h1");
-		element.textContent = this.textContent;
+		Object.assign(element, { ...options });
 		this.htmlElement = element;
 	}
 }

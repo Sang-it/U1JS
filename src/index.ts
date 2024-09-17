@@ -12,6 +12,11 @@ window.app = {
 			(window.app as App).display(element);
 		});
 	},
+	event: (id, eventType, callback) => {
+		window.addEventListener("DOMContentLoaded", () => {
+			(window.app as App).event(id, eventType, callback);
+		});
+	},
 };
 
 window.addEventListener("DOMContentLoaded", () => {

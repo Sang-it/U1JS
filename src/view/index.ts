@@ -1,29 +1,28 @@
-import { ParagraphOptions, DivOptions, H1Options } from "./element";
-import { ViewOptionsToElement } from "./parser";
+import { ElementOptions } from "./element";
+import { OptionsToElement } from "./parser";
 import { Root } from "./root";
 
 export * from "./element";
 export * from "./root";
 
-export type ViewOptions = ParagraphOptions | DivOptions | H1Options;
-
 export class View {
 	private root: Root;
-	private viewOptionsToElement: ViewOptionsToElement;
+	private optionsParser: OptionsToElement;
 
 	constructor() {
 		this.root = new Root();
-		this.viewOptionsToElement = new ViewOptionsToElement();
+		this.optionsParser = new OptionsToElement();
 	}
 
-	display(options: ViewOptions | ViewOptions[]) {
-		const elements = this.viewOptionsToElement.parse(options, this.root);
-		if (Array.isArray(elements)) {
-			for (const element of elements) {
-				element.display();
-			}
-		} else {
-			elements.display();
+	addOne(option: ElementOptions) {
+		const element = this.optionsParser.parseOne(option, this.root);
+		element.show();
+	}
+
+	addMany(options: ElementOptions[]) {
+		const elements = this.optionsParser.parseMany(options, this.root);
+		for (const element of elements) {
+			element.show();
 		}
 	}
 }

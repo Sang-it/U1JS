@@ -1,30 +1,22 @@
 <html>
+	<head>
+		<script src="lib.js"></script>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			app.display({
+				type: "PARAGRAPH",
+				id: "div",
+				className: "bg-blue-500 text-white p-4",
+				textContent: "Hello, World!",
+			});
+			app.event("div", "click", (e) => {
+				app.display({
+					type: "PARAGRAPH",
+					textContent: e.target.textContent + "!",
+				});
+			});
+		</script>
+	</head>
 
-<head>
-    <script src="lib.js"></script>
-    <script>
-        app.display([
-            {
-                type: "PARAGRAPH",
-                textContent: "Hello, World!",
-                subElements: [
-                    {
-                        type: "PARAGRAPH",
-                        textContent: "Hello, World!",
-                        subElements: [
-                            {
-                                type: "PARAGRAPH",
-                                textContent: "Hello, World!",
-                            },
-                        ],
-                    },
-
-                ],
-            },
-        ]);
-    </script>
-</head>
-
-<body></body>
-
+	<body></body>
 </html>

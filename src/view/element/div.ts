@@ -1,52 +1,41 @@
-import { Root } from "../root";
 import { Element } from ".";
-import { ViewOptions } from "..";
-import { ViewOptionsToElement } from "../parser";
+import { Root } from "../root";
 
-export type DivOptions = {
-  type: "DIV";
-  textContent: string;
-  subElements?: ViewOptions[];
-};
+export class Div<T> {
+	private subElements: Element[];
+	private htmlElement: HTMLDivElement;
 
-export class Div {
-  private textContent: string;
-  private htmlElement: HTMLElement;
-  private subElements: Element[];
-  private viewOptionsToElement: ViewOptionsToElement;
+	constructor(
+		options: T,
+		public parent: Element | Root
+	) {
+		this.createHTMLElement(options);
+	}
 
-  constructor(options: DivOptions, public parent: Element | Root) {
-    this.textContent = options.textContent;
-    this.createHTMLElement();
-    this.viewOptionsToElement = new ViewOptionsToElement();
-    if (options.subElements) {
-      this.subElements = this.viewOptionsToElement.parse(
-        options.subElements,
-        this
-      ) as Div[];
-    }
-  }
+	show() {
+		this.parent.appendChild(this.htmlElement);
+		if (this.subElements) {
+			this.showSubElements();
+		}
+	}
 
-  display() {
-    this.parent.appendChild(this.htmlElement);
-    if (this.subElements) {
-      this.displaySubElements();
-    }
-  }
+	appendChild(element: HTMLElement) {
+		this.htmlElement.appendChild(element);
+	}
 
-  appendChild(element: HTMLElement) {
-    this.htmlElement.appendChild(element);
-  }
+	setSubElements(subElements: Element[]) {
+		this.subElements = subElements;
+	}
 
-  displaySubElements() {
-    for (const element of this.subElements) {
-      element.display();
-    }
-  }
+	private showSubElements() {
+		for (const element of this.subElements) {
+			element.show();
+		}
+	}
 
-  private createHTMLElement() {
-    const element = document.createElement("div");
-    element.textContent = this.textContent;
-    this.htmlElement = element;
-  }
+	private createHTMLElement(options: T) {
+		const element = document.createElement("div");
+		Object.assign(element, { ...options });
+		this.htmlElement = element;
+	}
 }

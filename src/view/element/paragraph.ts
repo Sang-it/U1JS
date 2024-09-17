@@ -1,39 +1,21 @@
-import { Root } from "../root";
 import { Element } from ".";
-import { ViewOptions } from "..";
-import { ViewOptionsToElement } from "../parser";
+import { Root } from "../root";
 
-export type ParagraphOptions = {
-	type: "PARAGRAPH";
-	textContent: string;
-	subElements?: ViewOptions[];
-};
-
-export class Paragraph {
-	private textContent: string;
-	private htmlElement: HTMLElement;
+export class Paragraph<T> {
 	private subElements: Element[];
-	private viewOptionsToElement: ViewOptionsToElement;
+	private htmlElement: HTMLParagraphElement;
 
 	constructor(
-		options: ParagraphOptions,
+		options: T,
 		public parent: Element | Root
 	) {
-		this.textContent = options.textContent;
-		this.createHTMLElement();
-		this.viewOptionsToElement = new ViewOptionsToElement();
-		if (options.subElements) {
-			this.subElements = this.viewOptionsToElement.parse(
-				options.subElements,
-				this
-			) as Paragraph[];
-		}
+		this.createHTMLElement(options);
 	}
 
-	display() {
+	show() {
 		this.parent.appendChild(this.htmlElement);
 		if (this.subElements) {
-			this.displaySubElements();
+			this.showSubElements();
 		}
 	}
 
@@ -41,15 +23,19 @@ export class Paragraph {
 		this.htmlElement.appendChild(element);
 	}
 
-	displaySubElements() {
+	setSubElements(subElements: Element[]) {
+		this.subElements = subElements;
+	}
+
+	private showSubElements() {
 		for (const element of this.subElements) {
-			element.display();
+			element.show();
 		}
 	}
 
-	private createHTMLElement() {
+	private createHTMLElement(options: T) {
 		const element = document.createElement("p");
-		element.textContent = this.textContent;
+		Object.assign(element, { ...options });
 		this.htmlElement = element;
 	}
 }
