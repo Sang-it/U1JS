@@ -9,6 +9,7 @@ export type Logo = {
 
 export type ButtonLink = {
     textContent: string;
+    href: string;
 };
 
 export type NavLink = {

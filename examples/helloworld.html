@@ -8,60 +8,37 @@
             {
                 type: "NAV",
                 logo: {
-                    img: "https://via.placeholder.com/150",
+                    img: "https://www.kpass12.ninja/Kpass-secondary.png",
                     href: "https://via.placeholder.com/150",
-                    textContent: "Logo"
+                    textContent: "K Pass"
                 },
                 links: [
                     {
-                        textContent: "Home",
+                        textContent: "Password Generator",
                         href: "#"
                     },
-                    {
-                        textContent: "About",
-                        href: "#"
-                    },
-                    {
-                        textContent: "Contact",
-                        href: "#"
-                    }
                 ],
                 buttons: [
                     {
-                        textContent: "Login",
-                    },
-                    {
-                        textContent: "Sign Up",
+                        textContent: "Sign In",
                     }
                 ]
             }
         )
-        app.display({
-            type: "CARD",
-            title: "Hello, World!",
-            subElements: [
-                {
-                    type: "PARAGRAPH",
-                    textContent: "This is a test of the card system. This is a test of the card system."
+
+        app.display(
+            {
+                type: "JUMBOTRON",
+                title: "Hello, world!",
+                subTitle: "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.",
+                buttonLink: {
+                    textContent: "Learn more",
+                    href: "#"
                 },
-                {
-                    type: "PARAGRAPH",
-                    textContent: "This is a another of the card system."
-                },
-                {
-                    type: "PARAGRAPH",
-                    textContent: "This is a test of the card system. This is a test of the card system."
-                },
-                {
-                    type: "PARAGRAPH",
-                    textContent: "This is a another of the card system."
-                },
-                {
-                    type: "BUTTON",
-                    textContent: "This is a another of the card system."
-                },
-            ]
-        });
+                extendClassName: "pt-16",
+            }
+        )
+
     </script>
 </head>
 

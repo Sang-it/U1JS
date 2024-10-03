@@ -4,59 +4,70 @@ import { Paragraph } from "./paragraph";
 import { Button } from "./button";
 import { Card } from "./card";
 import { ButtonLink, Logo, Nav, NavLink } from "./nav";
+import { Jumbotron } from "./jumbotron";
 
 export type ParagraphOptions = {
-	id: string;
-	type: "PARAGRAPH";
-	textContent: string;
-	className: string;
-	subElements?: ElementOptions[];
+    id: string;
+    type: "PARAGRAPH";
+    textContent: string;
+    className: string;
+    subElements?: ElementOptions[];
 };
 
 export type DivOptions = {
-	type: "DIV";
-	textContent: string;
-	subElements?: ElementOptions[];
+    type: "DIV";
+    textContent: string;
+    subElements?: ElementOptions[];
 };
 
 export type H1Options = {
-	type: "H1";
-	textContent: string;
-	subElements?: ElementOptions[];
+    type: "H1";
+    textContent: string;
+    subElements?: ElementOptions[];
 };
 
 export type ButtonOptions = {
-	type: "BUTTON";
-	textContent: string;
+    type: "BUTTON";
+    textContent: string;
 };
 
 export type CardOptions = {
-	type: "CARD";
-	subElements?: ElementOptions[];
+    type: "CARD";
+    subElements?: ElementOptions[];
 };
 
 export type NavOptions = {
-	type: "NAV";
-	logo: Logo;
-	links: NavLink[];
-	buttons?: ButtonLink[];
+    type: "NAV";
+    logo: Logo;
+    links: NavLink[];
+    buttons?: ButtonLink[];
+};
+
+export type JumbotronOptions = {
+    type: "JUMBOTRON";
+    title: string;
+    subTitle: string;
+    buttonLink: ButtonLink;
+    extendClassName?: string;
 };
 
 export type ElementOptions =
-	| ParagraphOptions
-	| DivOptions
-	| H1Options
-	| ButtonOptions
-	| CardOptions
-	| NavOptions;
+    | ParagraphOptions
+    | DivOptions
+    | H1Options
+    | ButtonOptions
+    | CardOptions
+    | NavOptions
+    | JumbotronOptions;
 
 export type Element =
-	| Paragraph<ParagraphOptions>
-	| Div<DivOptions>
-	| H1<H1Options>
-	| Button<ButtonOptions>
-	| Card<CardOptions>
-	| Nav<NavOptions>;
+    | Paragraph<ParagraphOptions>
+    | Div<DivOptions>
+    | H1<H1Options>
+    | Button<ButtonOptions>
+    | Card<CardOptions>
+    | Nav<NavOptions>
+    | Jumbotron<JumbotronOptions>;
 
 export * from "./paragraph";
 export * from "./div";
@@ -64,3 +75,4 @@ export * from "./h1";
 export * from "./button";
 export * from "./card";
 export * from "./nav";
+export * from "./jumbotron";
