@@ -1,5 +1,5 @@
 import { Root, ElementOptions } from ".";
-import { Div, Element, H1, Paragraph } from "./element";
+import { Div, Element, H1, Paragraph, Button, Card, Nav } from "./element";
 
 export class OptionsToElement {
 	parseOne(option: ElementOptions, parent: Element | Root) {
@@ -27,6 +27,24 @@ export class OptionsToElement {
 				}
 				return h1;
 			}
+			case "BUTTON": {
+				const button = new Button(option, parent);
+				return button;
+			}
+			case "CARD": {
+				const card = new Card(option, parent);
+				if (option.subElements) {
+					card.setSubElements(
+						this.parseMany(option.subElements, card)
+					);
+				}
+				return card;
+			}
+			case "NAV": {
+				const nav = new Nav(option, parent);
+				return nav;
+			}
+
 			default:
 				throw new Error("Invalid view type");
 		}

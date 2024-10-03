@@ -35,7 +35,7 @@ export class Div<T> {
 
 	private createHTMLElement(options: T) {
 		const element = document.createElement("div");
-		Object.assign(element, { ...options });
+		Object.assign(element, { ...options }).removeAttribute("type");
 		this.htmlElement = element;
 	}
 }

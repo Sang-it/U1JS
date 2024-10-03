@@ -1,22 +1,71 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<script src="lib.js"></script>
-		<script src="https://cdn.tailwindcss.com"></script>
-		<script>
-			app.display({
-				type: "PARAGRAPH",
-				id: "div",
-				className: "bg-blue-500 text-white p-4",
-				textContent: "Hello, World!",
-			});
-			app.event("div", "click", (e) => {
-				app.display({
-					type: "PARAGRAPH",
-					textContent: e.target.textContent + "!",
-				});
-			});
-		</script>
-	</head>
 
-	<body></body>
+<head>
+    <script src="lib.js"></script>
+    <script>
+        app.display(
+            {
+                type: "NAV",
+                logo: {
+                    img: "https://via.placeholder.com/150",
+                    href: "https://via.placeholder.com/150",
+                    textContent: "Logo"
+                },
+                links: [
+                    {
+                        textContent: "Home",
+                        href: "#"
+                    },
+                    {
+                        textContent: "About",
+                        href: "#"
+                    },
+                    {
+                        textContent: "Contact",
+                        href: "#"
+                    }
+                ],
+                buttons: [
+                    {
+                        textContent: "Login",
+                    },
+                    {
+                        textContent: "Sign Up",
+                    }
+                ]
+            }
+        )
+        app.display({
+            type: "CARD",
+            title: "Hello, World!",
+            subElements: [
+                {
+                    type: "PARAGRAPH",
+                    textContent: "This is a test of the card system. This is a test of the card system."
+                },
+                {
+                    type: "PARAGRAPH",
+                    textContent: "This is a another of the card system."
+                },
+                {
+                    type: "PARAGRAPH",
+                    textContent: "This is a test of the card system. This is a test of the card system."
+                },
+                {
+                    type: "PARAGRAPH",
+                    textContent: "This is a another of the card system."
+                },
+                {
+                    type: "BUTTON",
+                    textContent: "This is a another of the card system."
+                },
+            ]
+        });
+    </script>
+</head>
+
+<body>
+</body>
+
 </html>

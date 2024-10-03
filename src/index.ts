@@ -1,4 +1,5 @@
 import { App, AppMethods } from "./app";
+import { attachScriptToHTML } from "./utils";
 
 declare global {
 	interface Window {
@@ -20,5 +21,6 @@ window.app = {
 };
 
 window.addEventListener("DOMContentLoaded", () => {
+	attachScriptToHTML("https://cdn.tailwindcss.com");
 	window.app = new App();
 });
