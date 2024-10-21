@@ -42,5 +42,11 @@
             "prettier --write",
             "eslint"
         ]
+    },
+    "pnpm": {
+        "overrides": {
+            "braces@<3.0.3": ">=3.0.3",
+            "micromatch@<4.0.8": ">=4.0.8"
+        }
     }
 }
