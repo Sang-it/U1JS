@@ -1,48 +1,138 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+	<head>
+		<script src="lib.js"></script>
+		<script>
+			app.display([
+				{
+					$tag: "header",
+					id: "header",
+					$childElements: [
+						{
+							$tag: "h1",
+							textContent: "Welcome to My UI Library",
+						},
+						{
+							$tag: "nav",
+							$childElements: [
+								{
+									$tag: "ul",
+									$childElements: [
+										{
+											$tag: "li",
+											$childElements: [
+												{
+													$tag: "a",
+													textContent: "Home",
+													href: "#",
+													id: "nav-home",
+												},
+											],
+										},
+										{
+											$tag: "li",
+											$childElements: [
+												{
+													$tag: "a",
+													textContent: "Features",
+													href: "#",
+													id: "nav-features",
+												},
+											],
+										},
+										{
+											$tag: "li",
+											$childElements: [
+												{
+													$tag: "a",
+													textContent: "Contact",
+													href: "#",
+													id: "nav-contact",
+												},
+											],
+										},
+									],
+								},
+							],
+						},
+					],
+				},
+				{
+					$tag: "section",
+					id: "intro",
+					$childElements: [
+						{
+							$tag: "p",
+							textContent:
+								"This is a simple UI library that dynamically generates HTML elements.",
+						},
+						{
+							$tag: "button",
+							textContent: "Learn More",
+							id: "learn-more",
+						},
+					],
+				},
+				{
+					$tag: "footer",
+					id: "footer",
+					textContent: "© 2024 Your Name - All rights reserved",
+				},
+			]);
 
-<head>
-    <script src="lib.js"></script>
-    <script>
-        app.display(
-            {
-                type: "NAV",
-                logo: {
-                    img: "https://www.kpass12.ninja/Kpass-secondary.png",
-                    href: "https://via.placeholder.com/150",
-                    textContent: "K Pass"
-                },
-                links: [
-                    {
-                        textContent: "Password Generator",
-                        href: "#"
-                    },
-                ],
-                buttons: [
-                    {
-                        textContent: "Sign In",
-                    }
-                ]
-            }
-        )
+			// Event handling
+			app.event("learn-more", "click", () => {
+				app.display([
+					{
+						$tag: "section",
+						id: "features",
+						$childElements: [
+							{ $tag: "h2", textContent: "Library Features" },
+							{
+								$tag: "ul",
+								$childElements: [
+									{
+										$tag: "li",
+										textContent: "Supports any HTML tag",
+									},
+									{
+										$tag: "li",
+										textContent: "Dynamic event handling",
+									},
+									{
+										$tag: "li",
+										textContent:
+											"Easily composable components",
+									},
+								],
+							},
+							{
+								$tag: "button",
+								textContent: "Show Contact Info",
+								id: "show-contact",
+							},
+						],
+					},
+				]);
 
-        app.display(
-            {
-                type: "JUMBOTRON",
-                title: "Hello, world!",
-                subTitle: "This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.",
-                buttonLink: {
-                    textContent: "Learn more",
-                    href: "#"
-                },
-                extendClassName: "pt-16",
-            }
-        )
-
-    </script>
-</head>
-
-<body>
-</body>
-
+				// Additional event inside Learn More
+				app.event("show-contact", "click", () => {
+					app.display([
+						{
+							$tag: "section",
+							id: "contact-info",
+							$childElements: [
+								{ $tag: "h2", textContent: "Contact Us" },
+								{
+									$tag: "p",
+									textContent: "Email: contact@example.com",
+								},
+							],
+						},
+					]);
+				});
+			});
+		</script>
+	</head>
+	<body></body>
 </html>

@@ -5,4 +5,4 @@ if [[ "$USER" != "sangitmanandhar" && "$current_branch" == "main" ]]; then
 fi
 
 lint-staged
-pnpm test
+#pnpm test

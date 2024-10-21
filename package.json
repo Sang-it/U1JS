@@ -10,7 +10,8 @@
         "test": "pnpm build && NODE_OPTIONS=--experimental-vm-modules jest --verbose",
         "format": "prettier --write src examples",
         "prepare": "husky",
-        "clean": "rm -rf dist node_modules bundle examples/lib.js"
+        "clean": "rm -rf dist node_modules bundle examples/lib.js",
+        "serve": "open examples/helloworld.html"
     },
     "keywords": [
         "UI Library"

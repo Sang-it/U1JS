@@ -1,37 +1,31 @@
-import { View, ElementOptions } from "./view";
-
-export type EventMap = {
-	click: MouseEvent;
-};
+import { View, Root } from "./view";
+import { ElementOptions, ElementParser } from "./parser";
 
 export class App {
 	private view: View;
 
 	constructor() {
-		this.view = new View();
+		this.view = new View(new Root(), new ElementParser());
 	}
 
-	display(options: ElementOptions | ElementOptions[]): void {
-		if (Array.isArray(options)) {
-			this.view.addMany(options);
-		} else {
-			this.view.addOne(options);
-		}
+	display(options: ElementOptions | ElementOptions[]) {
+		this.view.add(Array.isArray(options) ? options : [options]);
 	}
 
-	event<K extends keyof EventMap>(
+	event<K extends keyof HTMLElementEventMap>(
 		element_id: string,
 		eventType: K,
-		callback: (ev: EventMap[K]) => void
+		callback: (ev: HTMLElementEventMap[K]) => void
 	) {
 		const element = document.getElementById(element_id);
 		if (element) {
-			element.addEventListener(eventType, (ev: EventMap[K]) =>
+			element.addEventListener(eventType, (ev: HTMLElementEventMap[K]) =>
 				callback(ev)
 			);
-		} else {
-			console.error(`Element with id ${element_id} not found`);
+			return;
 		}
+
+		console.error(`Element with id ${element_id} not found`);
 	}
 }
 
