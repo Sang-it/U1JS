@@ -1,138 +1,207 @@
 <!doctype html>
 <html>
-	<head>
-		<script src="lib.js"></script>
-		<script>
-			app.display([
-				{
-					$tag: "header",
-					id: "header",
-					$childElements: [
-						{
-							$tag: "h1",
-							textContent: "Welcome to My UI Library",
-						},
-						{
-							$tag: "nav",
-							$childElements: [
-								{
-									$tag: "ul",
-									$childElements: [
-										{
-											$tag: "li",
-											$childElements: [
-												{
-													$tag: "a",
-													textContent: "Home",
-													href: "#",
-													id: "nav-home",
-												},
-											],
-										},
-										{
-											$tag: "li",
-											$childElements: [
-												{
-													$tag: "a",
-													textContent: "Features",
-													href: "#",
-													id: "nav-features",
-												},
-											],
-										},
-										{
-											$tag: "li",
-											$childElements: [
-												{
-													$tag: "a",
-													textContent: "Contact",
-													href: "#",
-													id: "nav-contact",
-												},
-											],
-										},
-									],
-								},
-							],
-						},
-					],
-				},
-				{
-					$tag: "section",
-					id: "intro",
-					$childElements: [
-						{
-							$tag: "p",
-							textContent:
-								"This is a simple UI library that dynamically generates HTML elements.",
-						},
-						{
-							$tag: "button",
-							textContent: "Learn More",
-							id: "learn-more",
-						},
-					],
-				},
-				{
-					$tag: "footer",
-					id: "footer",
-					textContent: "© 2024 Your Name - All rights reserved",
-				},
-			]);
 
-			// Event handling
-			app.event("learn-more", "click", () => {
-				app.display([
-					{
-						$tag: "section",
-						id: "features",
-						$childElements: [
-							{ $tag: "h2", textContent: "Library Features" },
-							{
-								$tag: "ul",
-								$childElements: [
-									{
-										$tag: "li",
-										textContent: "Supports any HTML tag",
-									},
-									{
-										$tag: "li",
-										textContent: "Dynamic event handling",
-									},
-									{
-										$tag: "li",
-										textContent:
-											"Easily composable components",
-									},
-								],
-							},
-							{
-								$tag: "button",
-								textContent: "Show Contact Info",
-								id: "show-contact",
-							},
-						],
-					},
-				]);
+<head>
+    <script src="lib.js"></script>
+    <script>
+        const nav = {
+            $tag: "nav",
+            $childElements: [
+                {
+                    $tag: "ul",
+                    $childElements: [
+                        {
+                            $tag: "li",
+                            $childElements: [
+                                {
+                                    $tag: "a",
+                                    textContent: "Home",
+                                    href: "#",
+                                    id: "nav-home",
+                                },
+                            ],
+                        },
+                        {
+                            $tag: "li",
+                            $childElements: [
+                                {
+                                    $tag: "a",
+                                    textContent: "Features",
+                                    href: "#",
+                                    id: "nav-features",
+                                },
+                            ],
+                        },
+                        {
+                            $tag: "li",
+                            $childElements: [
+                                {
+                                    $tag: "a",
+                                    textContent: "Contact",
+                                    href: "#",
+                                    id: "nav-contact",
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        }
+        const header = {
+            $tag: "header",
+            id: "header",
+            $childElements: [
+                {
+                    $tag: "h1",
+                    textContent: "Welcome to My UI Library",
+                },
+                {...nav},
+            ],
+        }
+        const section = {
+            $tag: "section",
+            id: "intro",
+            $childElements: [
+                {
+                    $tag: "p",
+                    textContent:
+                        "This is a simple UI library that dynamically generates HTML elements.",
+                },
+                {
+                    $tag: "button",
+                    textContent: "Learn More",
+                    id: "learn-more",
+                },
+            ],
+        }
+        const footer = {
+            $tag: "footer",
+            id: "footer",
+            textContent: "© 2024 Your Name - All rights reserved",
+        }
 
-				// Additional event inside Learn More
-				app.event("show-contact", "click", () => {
-					app.display([
-						{
-							$tag: "section",
-							id: "contact-info",
-							$childElements: [
-								{ $tag: "h2", textContent: "Contact Us" },
-								{
-									$tag: "p",
-									textContent: "Email: contact@example.com",
-								},
-							],
-						},
-					]);
-				});
-			});
-		</script>
-	</head>
-	<body></body>
+        app.display([
+            {...header},
+            {...section},
+            {...footer},
+        ]);
+
+        app.display({
+            $tag: "style",
+            textContent: `
+                        body {
+                          font-family: Arial, sans-serif;
+                          margin: 0;
+                          padding: 0;
+                          background-color: #f4f4f4;
+                        }
+                        header {
+                          background-color: #333;
+                          color: white;
+                          padding: 20px;
+                          text-align: center;
+                        }
+                        nav ul {
+                          list-style: none;
+                          padding: 0;
+                          margin: 0;
+                          display: flex;
+                          justify-content: center;
+                        }
+                        nav ul li {
+                          margin: 0 10px;
+                        }
+                        nav ul li a {
+                          color: white;
+                          text-decoration: none;
+                          font-weight: bold;
+                        }
+                        section {
+                          margin: 20px;
+                          padding: 20px;
+                          background-color: white;
+                          border-radius: 8px;
+                          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                        }
+                        button {
+                          padding: 10px 15px;
+                          font-size: 16px;
+                          cursor: pointer;
+                          background-color: #333;
+                          color: white;
+                          border: none;
+                          border-radius: 5px;
+                          transition: background-color 0.3s ease;
+                        }
+                        button:hover {
+                          background-color: #555;
+                        }
+                        footer {
+                          text-align: center;
+                          padding: 10px;
+                          background-color: #333;
+                          color: white;
+                          position: absolute;
+                          width: 100%;
+                          bottom: 0;
+                        }`,
+        });
+
+        // Event handling
+        app.event("learn-more", "click", () => {
+            app.display([
+                {
+                    $tag: "section",
+                    id: "features",
+                    $childElements: [
+                        {$tag: "h2", textContent: "Library Features"},
+                        {
+                            $tag: "ul",
+                            $childElements: [
+                                {
+                                    $tag: "li",
+                                    textContent: "Supports any HTML tag",
+                                },
+                                {
+                                    $tag: "li",
+                                    textContent: "Dynamic event handling",
+                                },
+                                {
+                                    $tag: "li",
+                                    textContent:
+                                        "Easily composable components",
+                                },
+                            ],
+                        },
+                        {
+                            $tag: "button",
+                            textContent: "Show Contact Info",
+                            id: "show-contact",
+                        },
+                    ],
+                },
+            ]);
+
+            // Additional event inside Learn More
+            app.event("show-contact", "click", () => {
+                app.display([
+                    {
+                        $tag: "section",
+                        id: "contact-info",
+                        $childElements: [
+                            {$tag: "h2", textContent: "Contact Us"},
+                            {
+                                $tag: "p",
+                                textContent: "Email: contact@example.com",
+                            },
+                        ],
+                    },
+                ]);
+            });
+        });
+    </script>
+</head>
+
+<body></body>
+
 </html>
