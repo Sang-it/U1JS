@@ -1,14 +1,15 @@
-import { View, Root } from "./view";
-import { ElementOptions, ElementParser } from "./parser";
+import { $View } from "./view";
+import { $Root } from "./element";
+import { $ElementOptions, $ElementParser } from "./parser";
 
 export class App {
-	private view: View;
+	private view: $View;
 
 	constructor() {
-		this.view = new View(new Root(), new ElementParser());
+		this.view = new $View(new $Root(), new $ElementParser());
 	}
 
-	display(options: ElementOptions | ElementOptions[]) {
+	display(options: $ElementOptions | $ElementOptions[]) {
 		this.view.add(Array.isArray(options) ? options : [options]);
 	}
 
@@ -24,7 +25,6 @@ export class App {
 			);
 			return;
 		}
-
 		console.error(`Element with id ${element_id} not found`);
 	}
 }

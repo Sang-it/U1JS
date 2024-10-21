@@ -1,4 +1,4 @@
-export class Root {
+export class $Root {
 	private rootElement: HTMLElement;
 
 	constructor() {

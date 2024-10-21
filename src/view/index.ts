@@ -1,16 +1,14 @@
-import { Root } from "./element";
-import { ElementParser, ElementOptions } from "../parser";
+import { $Root } from "../element";
+import { $ElementParser, $ElementOptions } from "../parser";
 
-export class View {
+export class $View {
 	constructor(
-		public root: Root,
-		public optionsParser: ElementParser
+		private root: $Root,
+		private elementParser: $ElementParser
 	) {}
 
-	add(options: ElementOptions[]) {
-		const elements = this.optionsParser.parse(options, this.root);
+	add(options: $ElementOptions[]) {
+		const elements = this.elementParser.parse(options, this.root);
 		elements.forEach((element) => element.show());
 	}
 }
-
-export * from "./element";

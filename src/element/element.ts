@@ -1,13 +1,13 @@
-import { Root } from "./root";
+import { $Root } from "./root";
 
-export class GenericElement {
+export class $Element {
 	private element: HTMLElement;
-	private childElements: GenericElement[];
+	private childElements: $Element[];
 
 	constructor(
 		tag: keyof HTMLElementTagNameMap,
 		options: Partial<HTMLElement>,
-		public parent: GenericElement | Root
+		public parent: $Element | $Root
 	) {
 		this.element = document.createElement(tag);
 		Object.assign(this.element, options);
@@ -22,7 +22,7 @@ export class GenericElement {
 		this.element.appendChild(element);
 	}
 
-	setChildElements(childElements: GenericElement[]) {
+	setChildElements(childElements: $Element[]) {
 		this.childElements = childElements;
 	}
 }
