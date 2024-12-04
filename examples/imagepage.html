@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="lib.js"></script>
+    <script>
+        const header = {
+            $tag: "header",
+            id: "header",
+            $childElements: [
+                {
+                    $tag: "h1",
+                    textContent: "America's Forest Carbon Market",
+                },
+            ],
+        }
+
+             const heroSection = {
+            $tag: "section",
+            id: "hero",
+            $childElements: [
+                {
+                    $tag: "p",
+                    textContent: "It our responsibilty to save our environemnt and trees. ",
+                },
+                {
+                    $tag: "button",
+                    textContent: "Number of tree",
+                },
+                {
+                    $tag: "button",
+                    textContent: "Carbon Offset",
+                },
+            ],
+        };
+
+        const footer = {
+            $tag: "footer",
+            id: "footer",
+            textContent: "© 2024 NCX - All rights reserved",
+        };
+
+        app.display([header, navigation, heroSection, footer]);
+    </script>
+</head>
+</html>
