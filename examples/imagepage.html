@@ -10,7 +10,7 @@
             $childElements: [
                 {
                     $tag: "h1",
-                    textContent: "America's Forest Carbon Market",
+                    textContent: "Save Paper Save Trees",
                 },
             ],
         }
@@ -37,10 +37,83 @@
         const footer = {
             $tag: "footer",
             id: "footer",
-            textContent: "© 2024 NCX - All rights reserved",
+            textContent: "Contact:planttrees123@gmail.com",
         };
 
         app.display([header, navigation, heroSection, footer]);
+
+        app.display({
+            $tag: "style",
+            textContent: `
+                * {
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                }
+                body, html {
+                    height: 100%;
+                    font-family: Arial, sans-serif;
+                    display: flex;
+                    flex-direction: column;
+                }
+                body {
+                    background: url('https://plus.unsplash.com/premium_photo-1669613233557-1676c121fe73?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+                    color: white;
+                    flex: 1;
+                }
+                header {
+                    text-align: center;
+                    padding: 50px 20px;
+                    background-color: rgba(0, 0, 0, 0.5);
+                }
+                nav ul {
+                    display: flex;
+                    justify-content: center;
+                    list-style-type: none;
+                    padding: 10px;
+                    background-color: rgba(0, 0, 0, 0.6);
+                }
+                nav ul li {
+                    margin: 0 15px;
+                    cursor: pointer;
+                }
+                nav ul li:hover {
+                    text-decoration: underline;
+                }
+                #hero {
+                    text-align: center;
+                    padding: 100px 20px;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    flex: 1;
+                }
+                #hero p {
+                    font-size: 1.5em;
+                    max-width: 800px;
+                    margin: 0 auto 20px;
+                }
+                button {
+                    padding: 10px 20px;
+                    margin: 10px;
+                    background-color: #333;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+                button:hover {
+                    background-color: #555;
+                }
+                footer {
+                    text-align: center;
+                    padding: 20px;
+                    background-color: #333;
+                    position: relative;
+                    bottom: 0;
+                    width: 100%;
+                    color: white;
+                }
+            `,
+        });
     </script>
 </head>
 </html>
