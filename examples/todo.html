@@ -14,6 +14,27 @@
                 },
             ],
         };
+        const mainSection = {
+            $tag: "section",
+            id: "todo-app",
+            $childElements: [
+                {
+                    $tag: "input",
+                    type: "text",
+                    id: "todo-input",
+                    placeholder: "Enter a new task...",
+                },
+                {
+                    $tag: "button",
+                    textContent: "Add Task",
+                    id: "add-task",
+                },
+                {
+                    $tag: "ul",
+                    id: "todo-list",
+                },
+            ],
+        };
 
     </script>
 </head>
