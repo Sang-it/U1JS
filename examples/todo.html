@@ -35,6 +35,43 @@
                 },
             ],
         };
+       const footer = {
+            $tag: "footer",
+            id: "footer",
+            textContent: "© 2024 Sujan Thapa - All rights reserved",
+        };
+
+        // Display the structure
+        app.display([
+            {...header},
+            {...mainSection},
+            {...footer},
+        ]);
+
+        // Add Task Event Handling
+        app.event("add-task", "click", () => {
+            const input = document.getElementById("todo-input");
+            const task = input.value.trim();
+            if (task) {
+                app.display({
+                    $tag: "li",
+                    textContent: task,
+                    $parent: "todo-list",
+                    $childElements: [
+                        {
+                            $tag: "button",
+                            textContent: "Delete",
+                            className: "delete-btn",
+                            onclick: (e) => {
+                                e.target.parentElement.remove();
+                            },
+                        },
+                    ],
+                });
+                input.value = ""; // Clear input field
+            }
+        });
+
 
     </script>
 </head>
